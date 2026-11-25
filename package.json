@@ -1,0 +1,13 @@
+{
+  "name": "university-backend",
+  "version": "1.0.0",
+  "description": "API REST simulée avec JSON Server pour University App - Gestion des étudiants (TP6)",
+  "scripts": {
+    "start": "json-server --watch db.json --port 3000"
+  },
+  "keywords": ["json-server", "api-rest", "react", "tp"],
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "0.17.4"
+  }
+}

@@ -1,0 +1,192 @@
+1. Comprendre le fichier db.json
+Q1. Qu'est-ce que db.json ?
+
+R : C'est un fichier JSON qui contient les données initiales de notre application. Dans notre TP, il représente une base de données simulée.
+
+Q2. Pourquoi utilise-t-on db.json ?
+
+R : Pour stocker les données des étudiants et les manipuler à travers une API sans avoir besoin d'une véritable base de données.
+
+Q3. Que représente la propriété etudiants ?
+
+R : Elle représente une collection d'étudiants. C'est une ressource que JSON Server expose sous forme d'API.
+
+Q4. Pourquoi utilise-t-on des crochets [] ?
+
+R : Pour représenter un tableau (array) contenant plusieurs étudiants.
+
+Q5. Pourquoi utilise-t-on des accolades {} ?
+
+R : Pour représenter un objet contenant les informations d'un étudiant.
+
+Q6. Quel est le rôle de la propriété id ?
+
+R : Elle permet d'identifier chaque étudiant de manière unique.
+
+Q7. Quelle est la différence entre annee et anneeEtude dans notre fichier ?
+
+R : Ce sont deux propriétés différentes. annee contient ici un nombre, tandis que anneeEtude contient une chaîne de caractères. Il est préférable d'utiliser un seul nom de propriété de manière cohérente dans toute l'application.
+
+Q8. Est-ce que toutes les propriétés doivent obligatoirement avoir une valeur ?
+
+R : Pas nécessairement. Certaines peuvent être vides, mais il est préférable de valider les données avant de les enregistrer.
+2. Comprendre JSON Server
+Q9. Qu'est-ce que JSON Server ?
+
+R : C'est un outil qui permet de créer rapidement une fausse API REST à partir d'un fichier JSON.
+
+Q10. Pourquoi utilise-t-on JSON Server dans notre projet ?
+
+R : Pour simuler le fonctionnement d'un backend et permettre à React de communiquer avec des données à travers des requêtes HTTP.
+
+Q11. Est-ce que JSON Server est un frontend ou un backend ?
+
+R : Il joue le rôle d'un backend simulé. Il reçoit les requêtes HTTP et retourne ou modifie les données.
+
+Q12. Est-ce que React communique directement avec db.json ?
+
+R : Non. React communique avec JSON Server à travers une API REST.
+
+Q13. Quelle est la différence entre db.json et JSON Server ?
+
+R :
+- db.json contient les données.
+- JSON Server expose ces données à travers une API.
+Q14. Est-ce que JSON Server utilise une véritable base de données comme MySQL ?
+
+R : Non. Il utilise un fichier JSON pour simuler une base de données.
+3. Comprendre les endpoints
+Supposons que JSON Server fonctionne sur :
+http://localhost:3000
+
+Q15. Qu'est-ce qu'un endpoint ?
+
+R : C'est une adresse URL qui permet d'accéder à une ressource de l'API.
+
+Q16. Quel est l'endpoint pour récupérer tous les étudiants ?
+
+R :
+GET http://localhost:3000/etudiants
+
+Q17. Quel est l'endpoint pour récupérer un étudiant ayant l'identifiant 1 ?
+
+R :
+GET http://localhost:3000/etudiants/1
+
+Q18. Quel est l'endpoint pour ajouter un étudiant ?
+
+R :
+POST http://localhost:3000/etudiants
+
+Q19. Quel est l'endpoint pour supprimer un étudiant ayant l'identifiant 1 ?
+
+R :
+DELETE http://localhost:3000/etudiants/1
+
+Q20. Quelle est la différence entre /etudiants et /etudiants/1 ?
+
+R :
+- /etudiants permet d'accéder à toute la collection.
+- /etudiants/1 permet d'accéder à un étudiant précis.
+4. Comprendre les méthodes HTTP
+Q21. Qu'est-ce qu'une méthode HTTP ?
+
+R : C'est une méthode qui indique au serveur quelle opération effectuer sur une ressource.
+
+Q22. À quoi sert GET ?
+
+R : À récupérer des données depuis le serveur.
+
+Q23. À quoi sert POST ?
+
+R : À ajouter une nouvelle ressource.
+
+Q24. À quoi sert PUT ?
+
+R : À remplacer complètement une ressource existante.
+
+Q25. À quoi sert PATCH ?
+
+R : À modifier une ou plusieurs propriétés d'une ressource existante.
+
+Q26. À quoi sert DELETE ?
+
+R : À supprimer une ressource.
+
+Q27. Quelle est la différence entre GET et POST ?
+
+R :
+- GET récupère des données.
+- POST envoie de nouvelles données pour les ajouter.
+Q28. Quelle est la différence entre PUT et PATCH ?
+
+R :
+- PUT remplace généralement toute la ressource.
+- PATCH modifie uniquement certaines propriétés.
+5. Comprendre Fetch et les requêtes API
+Q29. Qu'est-ce que Fetch API ?
+
+R : C'est une fonctionnalité JavaScript qui permet d'envoyer des requêtes HTTP et de communiquer avec une API.
+
+Q30. Pourquoi utilise-t-on fetch() dans React ?
+
+R : Pour récupérer ou envoyer des données entre notre application React et le serveur.
+
+Q31. Que fait ce code ?
+fetch("http://localhost:3000/etudiants")
+
+R : Il envoie une requête GET pour récupérer la liste des étudiants.
+
+Q32. Pourquoi utilise-t-on response.json() ?
+
+R : Pour convertir le corps de la réponse HTTP en données JavaScript exploitables.
+
+Q33. Pourquoi utilise-t-on await ?
+
+R : Parce que la communication avec un serveur prend du temps. await permet d'attendre le résultat d'une opération asynchrone.
+
+Q34. Pourquoi utilise-t-on async ?
+
+R : Pour déclarer une fonction asynchrone qui peut utiliser await.
+
+Q35. À quoi sert JSON.stringify() ?
+
+R : À convertir un objet JavaScript en chaîne de caractères JSON pour pouvoir l'envoyer dans le corps d'une requête HTTP.
+
+Q36. Pourquoi utilise-t-on Content-Type: application/json ?
+
+R : Pour indiquer au serveur que les données envoyées dans le corps de la requête sont au format JSON.
+
+Q37. Pourquoi utilise-t-on method: "POST" ?
+
+R : Pour indiquer au serveur que nous voulons ajouter une nouvelle ressource.
+6. Comprendre la communication entre React et le serveur
+Q38. Comment React récupère-t-il les étudiants ?
+
+R : React envoie une requête GET à l'API avec fetch(). Le serveur retourne les données, puis React les stocke dans un state pour les afficher.
+
+Q39. Que se passe-t-il lorsqu'on ajoute un étudiant ?
+
+R :
+1. L'utilisateur remplit le formulaire.
+2. React récupère les valeurs.
+3. React envoie une requête POST.
+4. JSON Server ajoute l'étudiant dans db.json.
+5. React actualise la liste des étudiants.
+Q40. Que se passe-t-il lorsqu'on supprime un étudiant ?
+
+R :
+1. React envoie une requête DELETE.
+2. JSON Server supprime l'étudiant.
+3. React actualise la liste.
+Q41. Pourquoi doit-on actualiser le state après une requête POST ou DELETE ?
+
+R : Pour afficher les nouvelles données dans l'interface React.
+
+Q42. Est-ce que modifier uniquement le state React suffit pour enregistrer un étudiant dans db.json ?
+
+R : Non. Le state modifie uniquement les données en mémoire dans React. Il faut envoyer une requête POST à l'API pour enregistrer durablement le nouvel étudiant.
+
+Q43. Si nous actualisons la page, est-ce que les données ajoutées avec POST restent disponibles ?
+
+R : Oui. JSON Server enregistre les modifications dans db.json, donc elles restent disponibles après le rechargement de la page.
